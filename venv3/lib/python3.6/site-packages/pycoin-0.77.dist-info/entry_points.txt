@@ -1,0 +1,10 @@
+[console_scripts]
+block = pycoin.cmds.block:main
+bu = pycoin.cmds.bitcoin_utils:main
+cache_tx = pycoin.cmds.cache_tx:main
+fetch_unspent = pycoin.cmds.fetch_unspent:main
+genwallet = pycoin.cmds.genwallet:main
+ku = pycoin.cmds.ku:main
+spend = pycoin.cmds.spend:main
+tx = pycoin.cmds.tx:main
+

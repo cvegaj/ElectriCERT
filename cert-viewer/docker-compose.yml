@@ -1,0 +1,29 @@
+version: "2"
+
+
+services:
+
+  web:
+    build: .
+    image: blockcerts/certviewer:latest
+    env_file:
+      - ./cert-viewer-local.env
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/test
+    #command: python3 -u /cert-viewer/run.py
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mvertes/alpine-mongo:latest
+    volumes:
+        - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    restart: always
+
+volumes:
+  mongo-data:
+    external: false

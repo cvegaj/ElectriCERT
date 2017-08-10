@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block head %}
+
+        <!-- Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta charset="utf-8">
+        <meta name="description" content="{{ site_description }}"/>
+        <meta name="author" content="{{ issuer_name }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="shortcut icon" href="{{ theme_static('img/favicon.ico') }}">
+
+        <!-- Title
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        {% block css %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel=stylesheet type=text/css href="{{ theme_static('css/style.css') }}">
+        {% endblock %}
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/verification.js"></script>
+
+    {% endblock %}
+
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Content
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="footer">
+        {% block footer %}
+            <div class="contact">Contact: <a href="mailto:{{ config.ISSUER_EMAIL }}">{{ config.ISSUER_EMAIL }}</a></div>
+            <div class="faq_link">Questions? Check out our <a href="/faq">FAQ page</a></div>
+            <div class="home_links"><a href="/">Home</a>&nbsp;|&nbsp;<a href="http://www.blockcerts.org/">Powered by the
+                Blockchain Certificates Project</a></div>
+
+        {% endblock %}
+    </div>
+</div>
+
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"/>
+    <script type="text/javascript" src="/static/js/verification.js"></script>
+
+{% endblock %}
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+</body>
+</html>

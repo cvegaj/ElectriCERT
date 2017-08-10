@@ -1,0 +1,20 @@
+{% extends theme('layout.html') %}
+
+{% block content %}
+    <div class="issuer-logo">
+        <img src="{{ theme_static(config.ISSUER_LOGO_PATH) }}"/>
+    </div>
+
+    <div class="faq-title">
+        <h1>Blockchain Certificates FAQ</h1>
+    </div>
+    <div class="faq-text">
+        <h3>What are the blockchain certificates?</h3>
+        <p>
+            In essence, they are digital representations of your physcial certificates. Technically, we create a
+            JSON that contains the certificate information, then sign and hash it, and place the hash on the Bitcoin
+            blockchain. If you'd like to learn more about their architecture, please check out the <a
+                href="http://www.blockcerts.org/" target="_blank"> Blockchain Certificates Project website </a>.
+        </p>
+    </div>
+{% endblock %}

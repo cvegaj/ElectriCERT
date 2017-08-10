@@ -1,0 +1,62 @@
+{% extends theme('layout.html') %}
+
+{% block title %}
+    Verified Certificate
+{% endblock %}
+
+{% block content %}
+
+    <!-- Award -->
+    {% block award %}
+        <div class="issuer-logo">
+            <img src="{{ award.logoImg }}"/>
+        </div>
+
+        <div class="certificate-owner">
+            <h1>{{ award.name }}</h1>
+        </div>
+
+        <div class="certificate-meta">
+            <span class="certificate-name">{{ award.title }}</span>
+            <span class="issuer-name">{{ award.organization }}</span>
+            <span class="date-span">{{ award.subtitle }}</span>
+        </div>
+
+        <div class="certificate-description">
+            <p>{{ award.text }}</p>
+        </div>
+
+        {% if award.signatureImg %}
+            <div class="certificate-signature">
+                <img src="{{ award.signatureImg }}" id="signature-img" alt="Signature"/>
+            </div>
+        {% endif %}
+
+    {% endblock %}
+
+    <div class="verify">
+        <p>This certificate was digitally signed by {{ award.organization }} and registered on the Bitcoin
+            blockchain.</p>
+        <button id="verify-button" value="{{ verification_info }}">Verify certificate</button>
+
+        <span id="verified" class="verified"><img id="verified-icon" src="{{ theme_static('img/verified.png') }}"> Verified </span>
+        <span id="not-verified" class="not-verified"><img id="not-verified-icon"
+                                                          src="{{ theme_static('img/not-verified.png') }}"> Not Verified </span>
+    </div>
+
+    <div>
+        <h6 id="progress-msg"></h6>
+    </div>
+
+    <div class="issuer-id">
+        <strong>Issuer ID:</strong> <span class="issuer-id-url"><a href="{{ award.issuerID }}">{{ award.issuerID }}</a></span>
+    </div>
+
+    <div class="blockchain-address">
+        <strong>Blockchain Address:</strong> <span class="address"><a
+            href="{{ award.transactionIDURL }}">{{ award.transactionIDURL }}</a> </span>
+    </div>
+
+{% endblock %}
+
+

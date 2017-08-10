@@ -1,0 +1,69 @@
+{% extends theme('layout.html') %}
+
+{% block content %}
+    <div class="issuer-logo">
+        <img src="{{ theme_static(config.ISSUER_LOGO_PATH) }}"/>
+    </div>
+    <div class="row">
+        <div>
+            <h3>Request Your Certificate</h3>
+            <div class="flashed-messages">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="create-bitcoin-address">
+                <p>
+                    The blockchain certificates are created using the Bitcoin blockchain. In order to issue you a coin,
+                    you need to have a Bitcoin identity. Never used Bitcoin before? Please create a bitcoin identity
+                    below.
+                </p>
+                <div>
+                    {% from "_formhelpers.html" import render_errors, render_radio_field %}
+                    <form method="POST" id="bitcoin-form">
+                        <span class="first-group">
+                            {{ render_radio_field(bitcoin.identity) }}
+                        </span>
+                        {{ render_errors(bitcoin.identity) }}
+                        <div>
+                            <button type="button">Next</button>
+                        </div>
+                    </form>
+                    <div>
+                        <p id="key-warning" class="notice-text">If you have a pre-existing Bitcoin identity, it is
+                            recommended that you make a new Bitcoin identity (public address and private key) to hold
+                            your certificate.</p>
+                        <a href="/bitcoinkeys" target="_blank">
+                            <button type="button" class="btn" id="generate-keys-btn">Create Bitcoin Identity</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <span id="reg-info" class="show-later">
+              <div class="recipient-info">
+                  {% from "_formhelpers.html" import render_errors, render_radio_field %}
+                  <form method="POST" id="reg-form">
+                    <div>{{ form.pubkey(type='text',placeholder='Bitcoin Public Address',**{'class':'form-control'}) }}</div>
+                    {{ render_errors(form.pubkey) }}
+                    <div>{{ form.first_name(type='text',placeholder='First Name',**{'class':'form-control'}) }}</div>
+                    {{ render_errors(form.first_name) }}
+                    <div>{{ form.last_name(type='text',placeholder='Last Name',**{'class':'form-control'}) }}</div>
+                    {{ render_errors(form.last_name) }}
+                    <div>{{ form.email(type='email',placeholder='Email',**{'class':'form-control'}) }}</div>
+                    {{ render_errors(form.email) }}
+                    <button type="submit" class="btn" id="submit-btn">Submit</button>
+                  </form>
+              </div>
+            </span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="text/javascript" src="/static/js/register.js"></script>
+{% endblock %}

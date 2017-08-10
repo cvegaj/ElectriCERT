@@ -1,0 +1,42 @@
+{
+  "@context": "https://www.blockcerts.org/schema/1.2/context.json",
+  "type": "BlockchainCertificate",
+  "document": {
+    "type": "CertificateDocument",
+    "assertion": {
+      "type": "Assertion",
+      "evidence": "",
+      "id": "http://www.theissuer.edu/fb9e6259-f3ee-438a-b98f-a24f54187af8",
+      "image:signature": "data:image/png;base64,",
+      "issuedOn": "2016-05-26T12:00:00Z",
+      "uid": "fb9e6259-f3ee-438a-b98f-a24f54187af8"
+    },
+    "certificate": {
+      "type": "Certificate",
+      "description": "Certificate description",
+      "image": "data:image/png;base64,",
+      "issuer": {
+        "type": "Issuer",
+        "email": "issuer@theissuer.edu",
+        "id": "https://www.theissuer.edu/issuer/the-issuer.json",
+        "image": "data:image/png;base64,",
+        "name": "Issuing Institution",
+        "url": "http://www.theissuer.edu"
+      },
+      "subtitle": "2016",
+      "name": "Certificate name"
+    },
+    "recipient": {
+      "familyName": "RecipientLastName",
+      "givenName": "RecipientFirstName",
+      "hashed": false,
+      "identity": "recipient@domain.com",
+      "publicKey": "1GCrFRozNVWCqTreV7ZoXudiotknoJeXaz",
+      "type": "email"
+    },
+    "verify": {
+      "attribute-signed": "uid",
+      "type": "ECDSA(secp256k1)"
+    }
+  }
+}
