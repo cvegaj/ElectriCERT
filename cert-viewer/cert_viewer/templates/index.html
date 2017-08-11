@@ -28,10 +28,7 @@
             </div>
     {% else %}
         <div class="intro-text">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-            mus. Donec qam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-            quis enim.
+            Certificados emitidos por la Escuela de Ingeniería Eléctrica de la Universidad de Costa Rica.
         </div>
 
     {% endif %}
@@ -40,7 +37,7 @@
     <div class="recently-issued">
         {% if config.RECENT_CERT_IDS %}
             <div class="recent-title">
-                <h1>Recently Issued</h1>
+                <h1>Transacciones recientes</h1>
             </div>
             {% for cert_id in config.RECENT_CERT_IDS %}
                 <!--<a href="/{{ cert_id }}">{{ cert_id }}</a> <br>-->
