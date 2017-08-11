@@ -53,7 +53,7 @@ Cert-viewer se utiliza para ver y verificar los certificados emitidos con el Cer
 Esta herramienta cuenta también con un archivo de configuracioón confx2.ini. 
 En este, es necesario agregar los nombres de los certificados recientemente emitidos. 
 
-Cert-issuer se puede correr de dos maneras:
+Cert-viewer se puede correr de dos maneras:
 * Utilizando el script de Python: `> python run.py -c confx2.ini`
 * Corriendo el script `>./script-viewer.sh`. Este script a su vez llama a otro script de python que actualiza los nombres de los certificados en el confx2.ini. 
 
