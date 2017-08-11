@@ -1,5 +1,5 @@
 # ElectriCERT
-Implementación de un sistema para emitir certificados en un blockchain para la Escuela de Ingeniería Eléctrica de la Universidad de Costa Rica. Basado en el proyecto abierto Blockcerts. 
+Implementación de un sistema para emitir certificados en blockchain para la Escuela de Ingeniería Eléctrica de la Universidad de Costa Rica. Basado en el código abierto Blockcerts. 
 
 # Instalación
 Antes de empezar se deben tener los siguientes programas instalados:
@@ -30,7 +30,7 @@ Cert-tools se puede correr de dos maneras:
 
 # Cert-issuer
 
-Cert-issuer se utiliza para emitir los certificados en el Blockchain. Para utilizar Cert-issuer, es necesario que BitcoinCore esté corriendo. También se necesita tener una llave pública con su respectiva llave privada. La llave privada debe escribirse un archivo llamado __pk_issuing.txt__ dentro de la carpeta __data__.   
+Cert-issuer se utiliza para emitir los certificados en el Blockchain. Para utilizar Cert-issuer, es necesario que BitcoinCore esté corriendo. También se necesita tener una llave pública con su respectiva llave privada. La llave privada debe escribirse un archivo llamado __pk_issuing.txt__ dentro de la carpeta __data__. El script dentro de Cert-issuer utiliza Python 3, por lo tanto se debe utilizar esta version así como instalar todas las librerias para esta. O bien, utilizar un [ambiente virtual](https://stackoverflow.com/questions/23842713/using-python-3-in-virtualenv) con Python 3.
 
 Al igual que con Cert-tools, primero se instalan todos los requirimientos de Python.   
 `> cd cert-tools`    
@@ -39,11 +39,24 @@ Al igual que con Cert-tools, primero se instalan todos los requirimientos de Pyt
 Luego se debe configurar la aplicación mediante el archivo confx.ini.
 Algunos parámetros importantes a cambiar son:
 * issuing_address = la llave pública obtenida de Bitcoin Core.
-* usb_name = el directorio donde se almacena el archivo pk_issuing
+* usb_name = el directorio donde se almacena el archivo pk_issuing.
 * key_file = pk_issuing.txt, archivo que contiene la llave privada.
 
+Cert-issuer se puede correr de dos maneras:
+* Utilizando el script de Python: `> python3 issue_certificates.py -c confx.ini`
+* Corriendo el script `>./script-issuer.sh`. Este script activa el virtual enviroment y copia automáticamente los certificados a la carpeta dentro de cert-viewer. 
 
 # Cert-viewer
+
+Cert-viewer se utiliza para ver y verificar los certificados emitidos con el Cert-issuer. Esta herramienta corre en la red local y se puede ver en cualquier explorador de internet. Los certificados a visualizar deben estar en la carpeta __cert_data__. Cert-viewer utiliza Python 2.7.
+
+Esta herramienta cuenta también con un archivo de configuracioón confx2.ini. 
+En este, es necesario agregar los nombres de los certificados recientemente emitidos. 
+
+Cert-issuer se puede correr de dos maneras:
+* Utilizando el script de Python: `> python run.py -c confx2.ini`
+* Corriendo el script `>./script-viewer.sh`. Este script a su vez llama a otro script de python que actualiza los nombres de los certificados en el confx2.ini. 
+
 
 # BitcoinCore
 Una vez se tiene instalado y corriendo BitcoinCore, se debe obtener una dirección de recepcion (llave pública) y su respectiva llave privada.
@@ -53,4 +66,4 @@ Una vez se tiene instalado y corriendo BitcoinCore, se debe obtener una direcci�
 
 
 **Nota:** Este proyecto se validó en Mac OSX y en Ubuntu, utilizando la red Testnet del Bitcoin blockchain. 
-
+**Nota2:** Se recomienda utilizar los scripts automatizados: script-tools, script-issuer, script-viewer y script. Este último tiene la única función de llamar a los anteriores.  
