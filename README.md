@@ -11,11 +11,11 @@ Antes de empezar se deben tener los siguientes programas instalados:
   - BitcoinCore utiliza un archivo de configuración usualmente llamado [bitcoin.conf](https://es.bitcoin.it/wiki/Ejecuci%C3%B3n_de_Bitcoin#Archivo_de_configuraci.C3.B3n_Bitcoin.conf). En este repositorio se encuentra un archivo de configuración que puede tomar como ejemplo.
 
 # Cert-tools
-La aplicación Cert-tools se utiliza para crear los certificados en formato JSON, a partir de una tabla que contiene las identidades de los certificados que se vayan a crear. Los certificados son llamados __unsigned certificates__ y se pasan como entradas al Cert-issuer.   
+La aplicación Cert-tools se utiliza para crear los certificados en formato JSON, a partir de una tabla que contiene las identidades de los certificados que se vayan a crear. Los certificados son llamados __unsigned certificates__ y se pasan como entradas al Cert-issuer.     
 
-Para utilizar la herramineta, primero se instalan todos los requirimientos de Python.  
-`> cd cert-tools`  
-`> pip install .`  
+Para utilizar la herramineta, primero se instalan todos los requirimientos de Python.   
+`> cd cert-tools`    
+`> pip install .`     
 Luego se debe configurar la aplicacion. El archivo de configuración se llama confx.ini.
 Algunos parámetros importantes a cambiar son:
 * certificate_description: la descripción del certificado. 
@@ -30,6 +30,17 @@ Cert-tools se puede correr de dos maneras:
 
 # Cert-issuer
 
+Cert-issuer se utiliza para emitir los certificados en el Blockchain. Para utilizar Cert-issuer, es necesario que BitcoinCore esté corriendo. También se necesita tener una llave pública con su respectiva llave privada. La llave privada debe escribirse un archivo llamado __pk_issuing.txt__ dentro de la carpeta __data__.   
+
+Al igual que con Cert-tools, primero se instalan todos los requirimientos de Python.   
+`> cd cert-tools`    
+`> pip install .`
+
+Luego se debe configurar la aplicación mediante el archivo confx.ini.
+Algunos parámetros importantes a cambiar son:
+* issuing_address = la llave pública obtenida de Bitcoin Core.
+* usb_name = el directorio donde se almacena el archivo pk_issuing
+* key_file = pk_issuing.txt, archivo que contiene la llave privada.
 
 
 # Cert-viewer
